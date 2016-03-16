@@ -18,7 +18,7 @@ void to_uppercase(char* p_src, char* p_dest);
 int main(void)
 {
     char ch;
-    char buffer[MAX_STR_LEN];
+    char buffer[MAX_STR_LEN] = {0};
     char p_uppercase[MAX_STR_LEN];
     int word_num;
 
@@ -126,33 +126,41 @@ int get_word_count(char *p_str)
   int cnt = 0;
   // TODO: Write code here
   char *token = NULL;
-  char *tokenList[MAX_WORD_COUNT] = {NULL,};
-  int i, len;
+  char *tokenList[32] = { NULL, };
+  int i, len = 0;
 
-  token = strtok(p_str, " ");
+  token = (char *) malloc(sizeof(char) * 20);
+  while (*p_str) {
+    // get token
+    memset(token, 0x00, 20);
+    sscanf(p_str, "%s", token);
+//  printf("%s", token);
+    len = strlen(token);
 
-  while (token != NULL){
-    // check duplicate
-    for (i =0 ; i< cnt ; i++){
-        if (!(strcmp(token, tokenList[i])))
-            break;
+    for (i = 0; i < cnt; i++) {
+      if (!strcmp(token, tokenList[i])){
+        break;
+      }
     }
-
-    // add tokenLit
-    if (i == cnt){
-        len = strlen(token);
-        tokenList[cnt] = (char *)malloc((len + 1 )*sizeof(char));
+    printf("i=%d cnt=%d\n", i, cnt);
+    if (i == cnt) {
+      if (*token) {
+        printf("%d\n", token[0]);
+        tokenList[cnt] = (char *) malloc(sizeof(char) * (len + 1));
         memset(tokenList[cnt], 0x00, len + 1);
         strcpy(tokenList[cnt], token);
+        printf("%s", tokenList[cnt]);
         cnt++;
+        printf("cnt= %d\n", cnt);
+      }
     }
-    token = strtok(NULL, " ");
+    p_str += len +1; // for space
   }
-
-  for (i=0; i<cnt; i++){
+  for (i = 0; i < cnt; i++) {
     if (tokenList[i] != NULL)
-        free(tokenList[i]);
+      free(tokenList[i]);
   }
+  free(token);
 
 /*  char seps[] = " \r\n";
   char *token = NULL;
