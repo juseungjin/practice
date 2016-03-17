@@ -70,9 +70,18 @@ void sort_list(Node *head)
         if ( strcmp( smallest->data->emp_no, current->data->emp_no) < 0){
             smallest = current;
         }
-        temp = start;
-        start = smallest;
-        smallest = temp;
+		Node temp;
+        strcpy(temp.data->emp_no, start->data->emp_no);
+        strcpy(temp.data->name, start->data->name);
+        temp.data->salary = start->data->salary;
+
+        strcpy(start->data->emp_no, smallest->data->emp_no);
+        strcpy(start->data->name, smallest->data->name);
+        start->data->salary = smallest->data->salary;
+
+        strcpy(smallest->data->emp_no, temp.data->emp_no);
+        strcpy(smallest->data->name, temp.data->name);
+        smallest->data->salary = temp.data->salary;
         current = current->next;
     }
     start = start->next;
@@ -108,7 +117,8 @@ Node *find_node(Node *head, char *new_emp_no)
 {
   // TODO: Write code here
   Node* current = head;
-  while(current->data != NULL){
+
+  while(current != NULL && current->data != NULL){
     if (strcmp(current->data->emp_no, new_emp_no)==0)
         return current;
     current = current->next;
