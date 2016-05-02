@@ -1,0 +1,20 @@
+Java I/O, Generic, Refrence 방법, 
+C++ template, STL, 함수포인터, 스마트포인터, 
+콜백/ 델리게이트
+디자인패턴 싱글톤 Strategy, 등등
+자료구조 리스트 링크드리스트 스택 큐 해시테이블
+packet data aggregation 
+Java IO
+Thread Safe / Multi thread programming / semaphore / mutex
+Android - Activity, Service, Content Provider, Broadcast Receiver
+Webkit loadURL 플로우 정리
+Rendering Architecture
+유니코드, 커널, 네트워크
+RESTful API
+HTTP 3 way handshake, 4way handshake
+JVM 동작구조
+알고리즘 정렬 탐색 / 시간복잡도계산
+개발방법론 구조적프로그래밍/ 애자일(스크럼, 칸반, XP-TDD) V모델
+Java Object에 대해 설명하시오
+코딩면접 문제은행? codility
+
